@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-6 mx-auto">
+
+    <div class="card container m-5">
+      <div class="d-flex justify-content-between mt-3">
+        <input type="text" placeholder="Search Tasks....." />
+        <a type="button" class="btn btn-dark" href='add-task' >
+          <i class="bi bi-plus-square-fill"></i> New Task
+        </a>
+      </div>
+
+      <div class="container">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Due Date</th>
+              <th scope="col">Priority</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of Tasks">
+              <td>{{ item.id }}</td>
+              <td>{{ item.title }}</td>
+              <td>{{ item.description }}</td>
+              <td>{{ item.dueDate}}</td>
+              <td>{{ item.priority }}</td>
+              <td class="m-5">
+                <button type="button " class="btn btn-primary" [routerLink]="['/edit-task',item.id]">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button type="button" class="btn btn-danger mx-2" (click)="onDelete(item.id)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

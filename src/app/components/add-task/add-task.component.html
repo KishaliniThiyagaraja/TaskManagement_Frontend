@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-6 mx-auto">
+    <div class="card container m-5 p-3">
+      <form [formGroup]="taskForm" (ngSubmit)="OnSubmit()">
+        <div class="d-flex justify-content-between">
+          <h3 class="text text-danger">Add New Task</h3>
+          <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
+        </div>
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" formControlName="title">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" class="form-control" id="description" formControlName="description">
+        </div>
+        <div class="mb-3">
+          <label for="dueDate" class="form-label">Due Date</label>
+          <input type="date" class="form-control" id="dueDate" formControlName="duedate">
+        </div>
+        <div class="mb-3">
+          <label for="priority" class="form-label">Priority</label>
+          <select type="priority" class="form-control" id="priority" formControlName="priority">
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <button [disabled]="taskForm.invalid" type="submit" class="btn btn-primary"  >Submit</button>
+        <button type="click" class="btn btn-secondary m-1" (click)="onCancel()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

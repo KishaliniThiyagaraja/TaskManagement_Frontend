@@ -1,0 +1,82 @@
+<!-- ------------------------------ Nav bar ---------------------------------- -->
+<nav class="navbar navbar-dark bg-dark row">
+    <div class="col-1"><img src="https://th.bing.com/th/id/OIP.3tt7aXi_1jpH9w4swy-J5QHaHa?rs=1&pid=ImgDetMain "
+            alt="..." a class="navbar-brand" style="width: 100px; height: 100px;"></div>
+
+    <a class="navbar-brand col-2">UnicomTic</a>
+    <div class="col-3"></div>
+    <div class="col-1"></div>
+    <div class="col-2">
+        <form class="form-inline col-4">
+            <div>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+
+            </div>
+        </form>
+    </div>
+    <div class="col-1">
+        <button class="btn btn-outline-success my-2" type="submit"> Search
+        </button>
+    </div>
+
+</nav>
+
+
+
+
+<!-- ------------------------------ side bar ---------------------------------- -->
+
+<div class="d-flex">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 1000px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"> </span>
+            </button>
+
+
+            <div class="pos-f-t">
+                <div class="collapse" id="navbarToggleExternalContent">
+                </div>
+
+            </div>
+            <span class="fs-5">Task Management</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#home" />
+                    </svg>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="tasks" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2" />
+                    </svg>
+                    Tasks
+                </a>
+            </li>
+            <li>
+                <a href="users" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#table" />
+                    </svg>
+                    Users
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="mt-5" style="width: 100%;">
+        <router-outlet></router-outlet>
+    </div>
+</div>
