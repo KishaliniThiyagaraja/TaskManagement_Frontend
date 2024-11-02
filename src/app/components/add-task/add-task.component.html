@@ -25,10 +25,17 @@
             <option value="High">High</option>
             <option value="Low">Low</option>
           </select>
+          <label for="assigneeId" class="form-label">Select the assignee</label>
+          <select formControlName="assigneeId" class="form-control" id="assigneeId">
+            <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+          </select>
         </div>
-        <button [disabled]="taskForm.invalid" type="submit" class="btn btn-primary"  >Submit</button>
+        <button type="submit" class="btn btn-primary " [disabled]="taskForm.invalid">Submit</button>
         <button type="click" class="btn btn-secondary m-1" (click)="onCancel()">Cancel</button>
       </form>
     </div>
   </div>
 </div>
+<ul>
+  <li *ngFor=""></li>
+</ul>
