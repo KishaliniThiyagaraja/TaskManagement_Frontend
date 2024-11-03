@@ -1,5 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,10 @@ export class TaskService {
   constructor(private http : HttpClient) { }
 
   getTasks(){
-    return this.http.get<Task[]>("http://localhost:5247/api/TaskItems");
+    return this.http.get<ITask[]>("http://localhost:5247/api/TaskItems");
   }
 
-  createTasks(task:Task){
+  createTasks(task:ITask){
     return this.http.post("http://localhost:5247/api/TaskItems",task);
   }
   deleteTask(taskId:number){
@@ -27,10 +28,10 @@ export class TaskService {
   }
   
   getTaskById(taskId:number){
-    return this.http.get<Task>('http://localhost:5247/api/TaskItems/'+ taskId);
+    return this.http.get<ITask>('http://localhost:5247/api/TaskItems/'+ taskId);
   }
 
-  updateTask(task: Task) {
+  updateTask(task: ITask) {
     return this.http.put('http://localhost:5247/api/TaskItems' + "/" + task.id, task);
   }
 
@@ -38,11 +39,12 @@ export class TaskService {
 
 
 
-export interface Task {
+export interface ITask {
   id: number;
   title: string;
   description: string;
   dueDate: string;
   priority: string;
+  assignee? : User;
 }
 

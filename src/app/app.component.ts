@@ -7,13 +7,15 @@ import { ListTaskComponent } from './components/list-task/list-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AddTaskComponent, RouterLink, ListTaskComponent,EditTaskComponent,AddUserComponent,ListUserComponent],
+  imports: [RouterOutlet, AddTaskComponent, RouterLink, ListTaskComponent,EditTaskComponent,AddUserComponent,ListUserComponent,RegisterComponent,LoginComponent],
  
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

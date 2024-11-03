@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [ReactiveFormsModule , CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css',
 })
@@ -18,50 +18,57 @@ export class AddTaskComponent {
   Tasks: any[] = [];
   taskForm: any;
   myCheckLists: any;
-  users:User[] = [];
+  users: User[] = [];
 
-
-  constructor(private fb: FormBuilder, private router: Router, private taskService:TaskService,private roastr:ToastrService,private userService:UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private taskService: TaskService,
+    private roastr: ToastrService,
+    private userService: UserService
+  ) {
     this.taskForm = this.fb.group({
       title: ['', [Validators.required]],
       description: [''],
       duedate: [''],
-      priority: ['',[Validators.required]],
-      assigneeId:['']
+      priority: ['', [Validators.required]],
+      assigneeId: [''],
     });
   }
 
-  ngOnInit():void {
-    this.userService.getUsers().subscribe(data =>{
-      console.log(data)
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe((data) => {
+      console.log(data);
       this.users = data;
-    })
+    });
   }
-  close(){}
-  // onCancel(){}
+  close() {}
 
   OnSubmit() {
     let task = this.taskForm.value;
-    //task.assigneeId = parseInt()
     console.log(task);
-    task.assigneeId = parseInt(task.assigneeId)
+    task.assigneeId = parseInt(task.assigneeId);
     console.log(task);
-    return this.taskService.createTasks(task).subscribe(data =>{
-      alert('Task created successfull');
-      this.router.navigate(['/tasks'])
-    }, error=>{
-      alert("Task is created failed")
-    })
-   
+    return this.taskService.createTasks(task).subscribe(
+      (data) => {
+        alert('Task created successfull');
+        this.router.navigate(['/tasks']);
+      },
+      (error) => {
+        alert('Task is created failed');
+      }
+    );
   }
-  
-  addCheckList(){
-    this.myCheckLists.push(this.fb.group({
-      name : [''],
-      isDone : [false]
-    }))
+
+  addCheckList() {
+    this.myCheckLists.push(
+      this.fb.group({
+        name: [''],
+        isDone: [false],
+      })
+    );
   }
-  removeCheckList(index : number){
+  removeCheckList(index: number) {
     this.myCheckLists.removeAt(index);
   }
 

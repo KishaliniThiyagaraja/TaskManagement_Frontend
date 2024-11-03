@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../../Services/task.service';
+import { ITask, TaskService } from '../../Services/task.service';
 import { Task } from '../../Modals/task';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './list-task.component.css'
 })
 export class ListTaskComponent implements OnInit{
-  Tasks : any[] = [];
+  Tasks : ITask[] = [];
   taskform: any;
 
   constructor(private taskservice : TaskService){}

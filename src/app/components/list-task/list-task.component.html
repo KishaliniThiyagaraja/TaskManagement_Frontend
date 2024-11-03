@@ -17,8 +17,9 @@
               <th scope="col">Title</th>
               <th scope="col">Description</th>
               <th scope="col">Due Date</th>
+              <th scope="col">Assignee</th>
               <th scope="col">Priority</th>
-              <th scope="col">Actions</th>
+                           <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -27,6 +28,7 @@
               <td>{{ item.title }}</td>
               <td>{{ item.description }}</td>
               <td>{{ item.dueDate}}</td>
+              <td>{{ item.assignee?.name}}</td>
               <td>{{ item.priority }}</td>
               <td class="m-5">
                 <button type="button " class="btn btn-primary" [routerLink]="['/edit-task',item.id]">

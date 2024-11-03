@@ -106,41 +106,7 @@ export class AddUserComponent implements OnInit {
     this.userForm.reset();
   }
 
-  // onAddUser() {
-  //   this.isSubmmited = true;
-  //   this.loadingIndicator = true;
-  //   this.user = this.userForm.value;
-
-  //   if (this.userForm.valid) {
-  //     this.user.id = 0;
-
-  //     this.userService.createUser(this.user).subscribe({
-  //       next: (res: any) => {
-  //         this.toastr.success('successfully added', 'Success');
-  //       },
-  //       complete: () => {
-  //         this.router.navigate(['/users']);
-  //         this.isSubmmited = false;
-  //         this.loadingIndicator = false;
-  //       },
-  //       error: (err: any) => {
-  //         this.isSubmmited = false;
-  //         this.loadingIndicator = false;
-  //       },
-  //     });
-  //   } else if (this.isEditForm == true) {
-  //     let user = this.userForm.value;
-  //     console.log(this.currentUserAddressId);
-  //     user.address.id = this.currentUserAddressId;
-  //     console.log(user);
-  //     this.userService.updateUser(user).subscribe((data) => {
-  //       this.isSubmmited = false;
-  //       this.toastr.success('successfully updated', 'Success');
-  //       this.router.navigate(['/users']);
-  //     });
-  //   } else {
-  //     this.isSubmmited = false;
-  //     this.loadingIndicator = false;
-  //   }
-  // }
+  onCancel() {
+    this.router.navigate(['/users']);
+  }
 }

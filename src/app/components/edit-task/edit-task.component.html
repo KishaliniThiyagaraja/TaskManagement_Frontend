@@ -26,6 +26,11 @@
                         <option value="Low">Low</option>
                     </select>
                 </div>
+                <label for="assigneeId" class="form-label">Select the assignee</label>
+          <select formControlName="assigneeId" class="form-control">
+            <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+          </select>
+                
 
                 <div class="mb-3 mx-auto">
                     <button type="submit" [disabled]="taskForm.invalid" class="btn btn-primary me-2" (click)="onSubmit()">Update</button>

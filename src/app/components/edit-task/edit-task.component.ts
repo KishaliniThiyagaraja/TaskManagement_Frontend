@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { User, UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-task-edit',
@@ -15,14 +16,17 @@ import { ToastrService } from 'ngx-toastr';
 
 
 export class EditTaskComponent implements OnInit {
-
+  Tasks: any[] = [];
   taskId: number
-  taskForm: FormGroup;    
+  taskForm: any; 
+  users: User[] = [];
+
+
 
 
 
   constructor(private route:Router, 
-    private fb: FormBuilder, private taskService: TaskService, private router: Router, private ActivateRoute: ActivatedRoute, private toast: ToastrService) {
+    private fb: FormBuilder, private taskService: TaskService, private router: Router, private ActivateRoute: ActivatedRoute, private toast: ToastrService , private userService : UserService) {
 
     const tid = this.ActivateRoute.snapshot.paramMap.get("id");
     this.taskId = Number(tid);
@@ -33,6 +37,7 @@ export class EditTaskComponent implements OnInit {
       description: [''],
       dueDate: [''],
       priority: ['', [Validators.required]],
+      assigneeId : ['']
     })
   }
 
@@ -42,6 +47,10 @@ export class EditTaskComponent implements OnInit {
     this.taskService.getTaskById(this.taskId).subscribe(data => {
       console.log(data);
       this.taskForm.patchValue(data);
+    })
+
+    this.userService.getUsers().subscribe(data => {
+    this.users = data;
     })
   }
 
@@ -55,7 +64,6 @@ export class EditTaskComponent implements OnInit {
     this.router.navigate(['/tasks']);
   }
 
-
   onSubmit() {
     const task = this.taskForm.value;
 
@@ -65,4 +73,7 @@ export class EditTaskComponent implements OnInit {
     });
   }
 
+  onEdit(taskId: number) {
+    this.router.navigate(['/edit-tasks', this.taskId]);
+  }
 }
